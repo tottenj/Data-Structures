@@ -18,7 +18,7 @@ Node * createNode(void){
 }
 
 //Add node to list
-void push(Node** head, int data){
+void append(Node** head, int data){
     Node *temp = createNode();
     Node *p = createNode();
     temp->data = data;
@@ -66,15 +66,32 @@ void printList(Node* head){
     }
 }
 
+void push(Node **head, int data){
+
+    Node * temp = createNode();
+    temp->data = data;
+
+
+    if(*head == NULL){
+        *head = temp;
+    }
+    else{
+        temp->next = *head;
+        *head = temp; 
+    }
+}
+
 int main (int argc, char * argv[]){
 
     int choice;
     Node * choiceNode;
 
     Node* head = NULL;
-    push(&head,2);
-    push(&head,4);
-    push(&head,56);
+    append(&head,2);
+    append(&head,4);
+    append(&head,56);
+
+    push(&head, 60);
 
     printList(head);
 
